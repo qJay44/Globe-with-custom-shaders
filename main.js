@@ -4,6 +4,7 @@ import globeFragment from './shaders/globe.frag'
 import atmosphereVertex from './shaders/atmosphere.vert'
 import atmosphereFragment from './shaders/atmosphere.frag'
 import gsap from 'gsap'
+import { Float32BufferAttribute } from 'three'
 
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000)
@@ -43,8 +44,24 @@ atmosphere.scale.set(1.1, 1.1, 1.1);
 const group = new THREE.Group()
 group.add(sphere)
 
+const starGeometry = new THREE.BufferGeometry()
+const starsMaterial = new THREE.PointsMaterial({ color:0xffffff})
+
+const starVertices = []
+for (let i = 0; i < 10000; i++) {
+  const x = (Math.random() - 0.5) * 2000
+  const y = (Math.random() - 0.5) * 2000
+  const z = -Math.random() * 2000
+  
+  starVertices.push(x, y, z)
+}
+
+starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3))
+const stars = new THREE.Points(starGeometry, starsMaterial)
+
 scene.add(group)
 scene.add(atmosphere)
+scene.add(stars)
 camera.position.z = 15
 
 const mouse = {
@@ -66,7 +83,7 @@ function animate() {
     y: mouse.x * 0.5,
     duration: 2
   })
-  
+
   requestAnimationFrame(animate)
 }
 
