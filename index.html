@@ -3,20 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="/dist/style.css">
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
   <body>
     <div class='flex h-screen'>
-      <div class="w-1/2">
-        <h1></h1>
+      <div class="w-1/2 flex flex-col justify-center px-8">
+        <div style="max-width: 500px;" class="mx-auto">
+          <h1 class="text-white text-4xl mb-8 font-exo leading-none">CHALLENGING THE STANDARD OF SPACE EXPLORATION</h1>
+          <p class="text-gray-400 mb-8 font-lato">
+            Millions of developers and companies build, ship, and maintain their software on GitHub—the largest and most advanced development platform in the world.
+          </p>
+          <div>
+            <a href="" class="text-white bg-green-600 inline-block px-8 py-4 rounded-full font-lato">Learn More</a>
+          </div>
+        </div>
       </div>
       <div class="w-1/2" id="canvasContainer">
         <canvas></canvas>
       </div>
     </div>
     <div id="app"></div>
-    <script type="module" src="src/main.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>

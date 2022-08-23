@@ -6,13 +6,17 @@ import atmosphereFragment from './shaders/atmosphere.frag'
 import gsap from 'gsap'
 
 const scene = new THREE.Scene()
-const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000)
-const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: document.querySelector('canvas') })
 const canvasContainer = document.querySelector('#canvasContainer')
+const camera = new THREE.PerspectiveCamera(
+  75,
+  canvasContainer.offsetWidth / canvasContainer.offsetHeight,
+  0.1,
+  1000
+)
+const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: document.querySelector('canvas') })
 
 renderer.setSize(canvasContainer.offsetWidth, canvasContainer.offsetHeight)
 renderer.setPixelRatio(window.devicePixelRatio)
-document.body.appendChild(renderer.domElement)
 
 // create a sphere
 const sphere = new THREE.Mesh(
