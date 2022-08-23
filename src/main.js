@@ -4,13 +4,13 @@ import globeFragment from './shaders/globe.frag'
 import atmosphereVertex from './shaders/atmosphere.vert'
 import atmosphereFragment from './shaders/atmosphere.frag'
 import gsap from 'gsap'
-import { Float32BufferAttribute } from 'three'
 
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000)
-const renderer = new THREE.WebGLRenderer({ antialias: true })
+const renderer = new THREE.WebGLRenderer({ antialias: true, canvas: document.querySelector('canvas') })
+const canvasContainer = document.querySelector('#canvasContainer')
 
-renderer.setSize(innerWidth, innerHeight)
+renderer.setSize(canvasContainer.offsetWidth, canvasContainer.offsetHeight)
 renderer.setPixelRatio(window.devicePixelRatio)
 document.body.appendChild(renderer.domElement)
 
@@ -52,7 +52,7 @@ for (let i = 0; i < 10000; i++) {
   const x = (Math.random() - 0.5) * 2000
   const y = (Math.random() - 0.5) * 2000
   const z = -Math.random() * 2000
-  
+
   starVertices.push(x, y, z)
 }
 
